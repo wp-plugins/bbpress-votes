@@ -25,9 +25,8 @@ function bbpvotes_get_score_link( $args = '' ) {
         
         );
         
-        if ( $score === false ) $link_classes[] = 'bbpvotes-post-no-score';
+        if ( !$votes_count ) $link_classes[] = 'bbpvotes-post-no-score';
 
-        //if ( empty( $post ) || !current_user_can( 'moderate', $post->ID ) ) return;
         $retval  = $r['link_before'] . '<a href="#" title="' . $r['title'] . '"'.bbpvotes_classes_attr($link_classes).'>' . $r['text'] . '</a>' . $r['link_after'];
 
         return apply_filters( 'bbpvotes_get_vote_up_link', $retval, $r );
@@ -302,7 +301,12 @@ function bbpvotes_get_post_votes_log( $post_id = 0 ) {
 
 
             $user_avatar = get_avatar( $user_id, 30 );
-            $user_vote_link = '<a title="'.$title.'" href="' . esc_url( bbp_get_user_profile_url( $user_id ) ) . '">' . $user_avatar . $icon;
+            $user_vote_link = sprintf( '<a title="%1$s" href="%2$s">%3$s</a>',
+            	$title,
+            	esc_url( bbp_get_user_profile_url( $user_id ) ),
+            	$user_avatar . $icon
+            );
+            
             $r.= apply_filters('bbpvotes_get_post_votes_log_user',$user_vote_link,$user_id,$score);
         }
         

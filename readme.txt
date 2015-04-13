@@ -7,7 +7,7 @@ Tested up to: 4.1.1
 Stable tag: trunk
 License: GPLv2 or later
 
-Allows logged to vote up or down to topics and replies inside bbPress, just like you can on StackOverflow for example.
+Allows logged users to vote up or down to topics and replies inside bbPress, just like you can on StackOverflow for example.
 
 == Description ==
 
@@ -49,6 +49,9 @@ Users cannot vote for themselves.  If you are the author of a topic or reply, th
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixed $user_vote_link link in bbpvotes_get_post_votes_log()
+* Fixed ‘bbpvotes-post-no-score’ class in bbpvotes_get_score_link()
 = 1.0.1 =
 * Minor fixes
 = 1.0 =
